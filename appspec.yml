@@ -1,7 +1,7 @@
 version: 0.0
 os: linux 
 files:
-  - source: / 
+  - source: source 
     destination: /var/www/loadtest/src
   - object: /var/www/loadtest/src
     mode: 644
@@ -9,4 +9,3 @@ files:
     group: nginx
     type:
       - directory
-      - file
