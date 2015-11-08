@@ -3,3 +3,8 @@ os: linux
 files:
   - source: / 
     destination: /var/www/loadtest/src
+object: /var/www/loadtest/src
+    mode: 644
+    owner: nginx
+    type:
+      - directory
