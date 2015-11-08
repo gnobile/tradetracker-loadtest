@@ -1,7 +1,7 @@
 version: 0.0
 os: linux 
 files:
-  - source: source 
+  - source: / 
     destination: /var/www/loadtest/src
 permission:
   - object: /var/www/loadtest/src
@@ -10,3 +10,4 @@ permission:
     group: nginx
     type:
       - directory
+      - file
