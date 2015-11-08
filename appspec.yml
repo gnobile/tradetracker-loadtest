@@ -4,10 +4,18 @@ files:
   - source: / 
     destination: /var/www/loadtest/src
 permission:
-  - object: /var/www/loadtest/src/*
+  - object: /var/www/loadtest/src
+    pattern: "*"
     mode: 644
     owner: nginx
     group: nginx
     type:
       - directory
+  - object: /var/www/loadtest/src
+    pattern: "*"
+    mode: 644
+    owner: nginx
+    group: nginx
+    type:
       - file
+
