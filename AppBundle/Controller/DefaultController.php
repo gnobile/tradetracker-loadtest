@@ -59,8 +59,8 @@ class DefaultController extends Controller
          $as_result = $as_client->updateAutoScalingGroup(array(
             'AutoScalingGroupName' => ''.$this->getParameter('as_fleet').'',
             'MinSize' => 2,
-            'MaxSize' => 8,
-            'DesiredCapacity' => 2
+            'MaxSize' => 10,
+            'DesiredCapacity' => 4
             ));
          if ($as_result) {
 		echo "Setup: starting autoscaling fleet <br />";
