@@ -58,7 +58,7 @@ class DefaultController extends Controller
                 ));
          $as_result = $as_client->updateAutoScalingGroup(array(
             'AutoScalingGroupName' => ''.$this->getParameter('as_fleet').'',
-            'MinSize' => 2,
+            'MinSize' => 4,
             'MaxSize' => 10,
             'DesiredCapacity' => 4
             ));
