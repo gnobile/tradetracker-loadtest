@@ -111,7 +111,9 @@ class DefaultController extends Controller
 	    $insert_res = pg_query($db_connection, "SELECT * FROM users");
 	    $insert_count = pg_query($db_connection, "SELECT count(*) FROM users");
             echo 'Numer of row: '.$insert_count.'<br>';
-	    if ($insert_res) {
+	    if ((int)$insert_count > 0) {
+	   // if ($insert_res) {
+                echo"Trovato $insert_count elementi, procedo <br />\n";
 	 	while ($row = pg_fetch_row($insert_res)) {
                           echo "Name: $row[0]  Surname: $row[1] Age: $row[2]";
                           echo "<br />\n";
