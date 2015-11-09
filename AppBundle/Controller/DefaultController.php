@@ -83,11 +83,11 @@ class DefaultController extends Controller
                 $instances = $reservation['Instances'];
                         foreach ($instances as $instance) {
                                 if ($instance['State']['Name'] == "stopped"){
-                                        echo 'Setup: Instance Id stopped: ' . $instance['InstanceId'] . ' Starting....\n';
+                                        echo "Setup: Instance Id stopped: ' . $instance['InstanceId'] . ' Starting....<br />";
                                         $start = $ec2_client->startInstances(array(
                                                 'InstanceIds' => array(''.$instance['InstanceId'].'')
                                         ));
-                                } else {echo 'DB Instance is running....\n';}      
+                                } else {echo "DB Instance is running....<br />";}      
                         }
         }
 
@@ -110,10 +110,7 @@ class DefaultController extends Controller
             } 
 	    $insert_res = pg_query($db_connection, "SELECT * FROM users");
 	    $count = pg_num_rows($insert_res);
-            echo "Numer of row: '.$count.'<br />";
 	    if ($count > 0) {
-	   // if ($insert_res) {
-                echo"Trovato $count elementi, procedo <br />\n";
 	 	while ($row = pg_fetch_row($insert_res)) {
                           echo "Name: $row[0]  Surname: $row[1] Age: $row[2]";
                           echo "<br />\n";
@@ -180,7 +177,7 @@ class DefaultController extends Controller
             ));
          
          if ($as_result) {
-          	echo 'TakeDown: taking down frontend fleet';     
+          	echo "TakeDown: taking down frontend fleet <br />";     
           }
 
 	  //stopping db tier
