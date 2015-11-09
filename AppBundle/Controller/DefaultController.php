@@ -83,7 +83,7 @@ class DefaultController extends Controller
                 $instances = $reservation['Instances'];
                         foreach ($instances as $instance) {
                                 if ($instance['State']['Name'] == "stopped"){
-                                        echo "Setup: Instance Id stopped: ' . $instance['InstanceId'] . ' Starting....<br />";
+                                        echo 'Setup: Instance Id stopped: ' . $instance['InstanceId'] . ' Starting....';
                                         $start = $ec2_client->startInstances(array(
                                                 'InstanceIds' => array(''.$instance['InstanceId'].'')
                                         ));
