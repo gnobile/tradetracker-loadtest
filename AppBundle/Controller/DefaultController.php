@@ -63,7 +63,7 @@ class DefaultController extends Controller
             'DesiredCapacity' => 2
             ));
          if ($as_result) {
-		echo 'Setup: starting autoscaling fleet\n';
+		echo "Setup: starting autoscaling fleet <br />";
 	 }  
 	 
 	 //Starting db fleet if stopped
@@ -83,7 +83,7 @@ class DefaultController extends Controller
                 $instances = $reservation['Instances'];
                         foreach ($instances as $instance) {
                                 if ($instance['State']['Name'] == "stopped"){
-                                        echo 'Setup: Instance Id stopped: ' . $instance['InstanceId'] . ' Starting....';
+                                        echo "Setup: Starting DB instance....<br />";
                                         $start = $ec2_client->startInstances(array(
                                                 'InstanceIds' => array(''.$instance['InstanceId'].'')
                                         ));
@@ -197,7 +197,7 @@ class DefaultController extends Controller
 		$instances = $reservation['Instances'];
 			foreach ($instances as $instance) {
 				if ($instance['State']['Name'] == "running"){
-					echo 'Instance Id running: ' . $instance['InstanceId'] . ' Stopping....';
+					echo "Stopping DB instance...<br />";
 					$stop = $ec2_client->stopInstances(array(
 						'InstanceIds' => array(''.$instance['InstanceId'].'')
 					));
