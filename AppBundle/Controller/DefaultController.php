@@ -113,6 +113,7 @@ class DefaultController extends Controller
 	    $count = pg_fetch_row($insert_count);
             echo "Numer of row: '.$count.'<br />";
 	    if ((int)$count > 0) {
+	    	//conto
 	   // if ($insert_res) {
                 echo"Trovato $count elementi, procedo <br />\n";
 	 	while ($row = pg_fetch_row($insert_res)) {
