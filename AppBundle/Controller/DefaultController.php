@@ -109,10 +109,9 @@ class DefaultController extends Controller
                    print("Connection Failed.");
             } 
 	    $insert_res = pg_query($db_connection, "SELECT * FROM users");
-	    $insert_count = pg_query($db_connection, "SELECT count(*) FROM users");
-	    $count = pg_fetch_row($insert_count);
+	    $count = pg_num_rows($insert_res);
             echo "Numer of row: '.$count.'<br />";
-	    if ((int)$count > 0) {
+	    if ($count > 0) {
 	   // if ($insert_res) {
                 echo"Trovato $count elementi, procedo <br />\n";
 	 	while ($row = pg_fetch_row($insert_res)) {
