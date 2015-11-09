@@ -42,7 +42,7 @@ class DefaultController extends Controller
 	   pg_prepare('insert',  $query);
 	   pg_execute('insert', array($name, $surname, $age)) || die("Error inserting data"); 
 	return new Response(
-               '<html><body>TEST<br>'.$name.' <br> '.$surname.' <br> '.$age.' <br></body></html>'
+               '<html><body>TEST: OK</body></html>'
                //'<html><body>OK<br></body></html>'
            );
        }
@@ -112,8 +112,6 @@ class DefaultController extends Controller
 	    $count = pg_num_rows($insert_res);
 	    if ($count > 0) {
 	 	while ($row = pg_fetch_row($insert_res)) {
-                          echo "Name: $row[0]  Surname: $row[1] Age: $row[2]";
-                          echo "<br />\n";
 			  $result = $ddb_client->putItem(array(
 				'TableName' => ''.$this->getParameter('ddb_table').'',
 				'Item' => array(
