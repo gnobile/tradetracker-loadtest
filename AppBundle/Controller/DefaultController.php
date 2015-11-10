@@ -130,7 +130,7 @@ class DefaultController extends Controller
 			pg_query("ROLLBACK");
 		}
 	  } else {
-		echo "Record on database: '.$count.'";
+		echo "Record on database: $count";
 	  }
 	  pg_close($db_connection);
            return new Response(
