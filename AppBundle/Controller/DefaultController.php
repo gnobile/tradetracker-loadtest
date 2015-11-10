@@ -41,6 +41,7 @@ class DefaultController extends Controller
            $query = "INSERT INTO users (name, surname, age) VALUES ($1, $2, $3)";
 	   pg_prepare('insert',  $query);
 	   pg_execute('insert', array($name, $surname, $age)) || die("Error inserting data"); 
+	   pg_close($db_connection);
 	return new Response(
                '<html><body>TEST: OK</body></html>'
                //'<html><body>OK<br></body></html>'
@@ -108,6 +109,7 @@ class DefaultController extends Controller
             if (!$db_connection) {
                    print("Connection Failed.");
             } 
+            pg_query("BEGIN");
 	    $insert_res = pg_query($db_connection, "SELECT * FROM users");
 	    $count = pg_num_rows($insert_res);
 	    if ($count > 0) {
@@ -123,10 +125,14 @@ class DefaultController extends Controller
 			} 
 		if ($result){ 
 			$delete_db = pg_query($db_connection, "DELETE FROM users") || die("Problem deleting users");
+			pg_query("COMMIT");
+		} else {
+			pg_query("ROLLBACK");
 		}
 	  } else {
 		echo "Error selecting data.";
 	  }
+	  pg_close($db_connection);
            return new Response(
                '<html><body>TRANSFER Completed</body></html>'
            );
