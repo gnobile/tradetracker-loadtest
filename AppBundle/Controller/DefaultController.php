@@ -1,7 +1,7 @@
 <?php
 
 namespace AppBundle\Controller;
-//require("config.php");
+
 
 use Aws\AutoScaling\AutoScalingClient;
 use Aws\DynamoDb\DynamoDbClient;
@@ -19,7 +19,7 @@ class DefaultController extends Controller
      */
    public function home() {
 	return new Response(
-	   '<html><body>LoadTest Home</body></html>'
+	   '<html><body>Welcome tradetracker engineer!</body></html>'
 	);
    }
    /**
@@ -58,9 +58,9 @@ class DefaultController extends Controller
                 ));
          $as_result = $as_client->updateAutoScalingGroup(array(
             'AutoScalingGroupName' => ''.$this->getParameter('as_fleet').'',
-            'MinSize' => 4,
+            'MinSize' => 3,
             'MaxSize' => 10,
-            'DesiredCapacity' => 4
+            'DesiredCapacity' => 3
             ));
          if ($as_result) {
 		echo "Setup: starting autoscaling fleet <br />";
